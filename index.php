@@ -1879,8 +1879,8 @@
 </style>
     <script>
         var airports = '';
-        var direction = '';
-		var departure,returning;
+        var legs = '1';
+		var departure,returning,cabin_selected;
 
         $.post("airports.json",{op:""},function(res){
             airports = res;
@@ -2048,11 +2048,11 @@
 //                            {
 //                                pass.push('INF')
 //                            }
-                        $.post("utilities.php",{op:"Flight.packageData",direction:direction,departure:departure,return:returning,origin:a_origin,destination:a_destination,passengers:pass,cabin:$("#cabin").val()},function(res){
+                        $.post("utilities.php",{op:"Flight.packageData",direction:legs,departure:departure,return:returning,origin:a_origin,destination:a_destination,passengers:pass,cabin:cabin_selected},function(res){
 //                            $.unblockUI();
                             if(res.response_code == 0)
                             {
-                                window.location = "new-post.php?ga="+res.response_message;
+                                // window.location = "new-post.php?ga="+res.response_message;
                             }
                             else
                             {
@@ -2064,7 +2064,7 @@
             })
         function directions(dd)
         {
-            direction = dd;
+            legs = dd;
         }
         function updateTraveller()
         {
@@ -2081,6 +2081,7 @@
             classa.each(function(ee,yy){
                 if($(this).is(":checked"))
                     {
+                        cabin_selected = $(this).val();
                         console.log($(this).val());
                     }
             })
