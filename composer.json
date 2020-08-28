@@ -1,0 +1,16 @@
+{
+    "name": "g126/airline",
+    "description": "airline ticketing",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ugo Malu",
+            "email": "ugo.malu@mail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "nesbot/carbon": "^2.37.0"
+    }
+}
