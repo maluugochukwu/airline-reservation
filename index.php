@@ -213,9 +213,9 @@
 <!--									<h4>Visit Europe, America, Asia, Africa or beyond!</h4>-->
 									<div class="banner-reservation-tabs">
 										<ul class="br-tabs">
-											<li class="active"><a href="javascript:;" onclick="direction('1')">Round Trip</a></li>
-											<li><a href="javascript:;" onclick="direction('0')">One Way</a></li>
-											<li><a href="javascript:;">Multiple Destinations</a></li>
+											<li class="active"><a href="javascript:directions(1)" onclick="">Round Trip</a></li>
+											<li><a href="javascript:directions(0)" onclick="">One Way</a></li>
+											<li><a href="javascript:void(0)">Multiple Destinations</a></li>
 										</ul><!-- .br-tabs end -->
 										<ul class="br-tabs-content" style="background-color: rgba(57,154,244,.8); height:95px !important">
 											<li class="active">
@@ -228,7 +228,7 @@
 														<i id="former" style=" z-index:9999999999999999999999999"></i>
 													</div><!-- .form-group end -->
 													<div class="form-group"  style="width:60%; z-index:1">
-														<input type="text"  id="to" name="to" class="departure_arrival form-control" placeholder="To where?" data-selectedestination="">
+														<input type="text"  id="to" name="to" class="departure_arrival form-control" placeholder="To where?" data-selecteddestination="">
 <!--														<i class="fas fa-plane"></i>-->
 													</div><!-- .form-group end -->
 													<div class="form-group" >
@@ -335,209 +335,12 @@
                                                        <input type="hidden" value="0" id="form_cabin" />
 											</li>
 											<li>
-												<form class="form-banner-reservation form-inline style-2 form-h-50">
-													<div class="form-group">
-														<input type="text" name="brPlaceStart" class="form-control" placeholder="From">
-														<i class="fas fa-plane"></i>
-													</div><!-- .form-group end -->
-													<div class="form-group">
-														<input type="text" name="brPlaceEnd" class="form-control" placeholder="To">
-														<i class="fas fa-plane"></i>
-													</div><!-- .form-group end -->
-													<div class="form-group">
-														<input type="text" name="brTimeStart" class="form-control datepicker-2-time-start"
-															placeholder="2019/09/30">
-														<i class="far fa-calendar"></i>
-													</div><!-- .form-group end -->
-													<div class="form-group">
-														<input type="text" name="brPassengerNumber" class="form-control show-dropdown-passengers"
-															placeholder="Passengers">
-														<i class="fas fa-user"></i>
-														<ul class="list-dropdown-passengers">
-															<li>
-																<ul class="list-persons-count">
-																	<li>
-																		<span>Adults:</span>
-																		<div class="counter-add-item">
-																			<a class="decrease-btn" href="javascript:;">-</a>
-																			<input type="text" value="1">
-																			<a class="increase-btn" href="javascript:;">+</a>
-																		</div><!-- .counter-add-item end -->
-																	</li>
-																	<li>
-																		<span>Childs:</span>
-																		<div class="counter-add-item">
-																			<a class="decrease-btn" href="javascript:;">-</a>
-																			<input type="text" value="0">
-																			<a class="increase-btn" href="javascript:;">+</a>
-																		</div><!-- .counter-add-item end -->
-																	</li>
-																</ul><!-- .list-persons-count end -->
-															</li>
-															<li>
-																<ul class="list-select-grade">
-																	<li>
-																		<label class="radio-container radio-default">
-																			<input type="radio" checked="checked" name="radio">
-																			<span class="checkmark"></span>
-																			Economy Class
-																		</label>
-																	</li>
-																	<li>
-																		<label class="radio-container radio-default">
-																			<input type="radio" checked="checked" name="radio">
-																			<span class="checkmark"></span>
-																			Business Class
-																		</label>
-																	</li>
-																	<li>
-																		<label class="radio-container radio-default">
-																			<input type="radio" checked="checked" name="radio">
-																			<span class="checkmark"></span>
-																			First Class
-																		</label>
-																	</li>
-																</ul><!-- .list-select-grade end -->
-															</li>
-															<li>
-																<ul class="list-reservation-options">
-																	<li>
-																		<label class="label-container checkbox-default">
-																			<span>
-																				Nonstop
-																			</span>
-																			<input type="checkbox">
-																			<span class="checkmark"></span>
-																		</label>
-																	</li>
-																	<li>
-																		<label class="label-container checkbox-default">
-																			<span>
-																				Refundable
-																			</span>
-																			<input type="checkbox">
-																			<span class="checkmark"></span>
-																		</label>
-																	</li>
-																</ul><!-- .list-reservation-options end -->
-															</li>
-															<li>
-																<a class="btn-reservation-passengers btn x-small colorful hover-dark"
-																	href="javascript:;">Done</a>
-															</li>
-														</ul><!-- .list-dropdown-passengers end -->
-													</div><!-- .form-group end -->
-													<div class="form-group">
-														<button type="submit" class="form-control icon"><i class="fas fa-search"></i></button>
-													</div><!-- .form-group end -->
-												</form><!-- .form-banner-reservation end -->
+												
 											</li>
 											<li>
 												<div class="multiple-destinations">
-													<form class="form-banner-reservation form-inline style-2 form-h-50">
-														<div class="form-group">
-															<div class="fields-row fields-4">
-																<div class="box-field">
-																	<input type="text" name="brPlaceStart" class="form-control" placeholder="From">
-																	<i class="fas fa-plane rotate-90-pos"></i>
-																</div><!-- .box-field end -->
-																<div class="box-field">
-																	<input type="text" name="brPlaceEnd" class="form-control" placeholder="To">
-																	<i class="fas fa-plane rotate-90-neg"></i>
-																</div><!-- .box-field end -->
-																<div class="box-field">
-																	<input type="text" name="brTimeStart" class="form-control datepicker-2-time-start"
-																		placeholder="2019/09/30">
-																	<i class="far fa-calendar"></i>
-																</div><!-- .box-field end -->
-																<div class="box-field">
-																	<input type="text" name="brPassengerNumber"
-																		class="form-control show-dropdown-passengers" placeholder="Passengers">
-																	<i class="fas fa-user"></i>
-																	<ul class="list-dropdown-passengers">
-																		<li>
-																			<ul class="list-persons-count">
-																				<li>
-																					<span>Adults:</span>
-																					<div class="counter-add-item">
-																						<a class="decrease-btn" href="javascript:;">-</a>
-																						<input type="text" value="1">
-																						<a class="increase-btn" href="javascript:;">+</a>
-																					</div><!-- .counter-add-item end -->
-																				</li>
-																				<li>
-																					<span>Childs:</span>
-																					<div class="counter-add-item">
-																						<a class="decrease-btn" href="javascript:;">-</a>
-																						<input type="text" value="0">
-																						<a class="increase-btn" href="javascript:;">+</a>
-																					</div><!-- .counter-add-item end -->
-																				</li>
-																			</ul><!-- .list-persons-count end -->
-																		</li>
-																		<li>
-																			<ul class="list-select-grade">
-																				<li>
-																					<label class="radio-container radio-default">
-																						<input type="radio" checked="checked" name="radio">
-																						<span class="checkmark"></span>
-																						Economy Class
-																					</label>
-																				</li>
-																				<li>
-																					<label class="radio-container radio-default">
-																						<input type="radio" checked="checked" name="radio">
-																						<span class="checkmark"></span>
-																						Business Class
-																					</label>
-																				</li>
-																				<li>
-																					<label class="radio-container radio-default">
-																						<input type="radio" checked="checked" name="radio">
-																						<span class="checkmark"></span>
-																						First Class
-																					</label>
-																				</li>
-																			</ul><!-- .list-select-grade end -->
-																		</li>
-																		<li>
-																			<ul class="list-reservation-options">
-																				<li>
-																					<label class="label-container checkbox-default">
-																						<span>
-																							Nonstop
-																						</span>
-																						<input type="checkbox">
-																						<span class="checkmark"></span>
-																					</label>
-																				</li>
-																				<li>
-																					<label class="label-container checkbox-default">
-																						<span>
-																							Refundable
-																						</span>
-																						<input type="checkbox">
-																						<span class="checkmark"></span>
-																					</label>
-																				</li>
-																			</ul><!-- .list-reservation-options end -->
-																		</li>
-																		<li>
-																			<a class="btn-reservation-passengers btn x-small colorful hover-dark"
-																				href="javascript:;">Done</a>
-																		</li>
-																	</ul><!-- .list-dropdown-passengers end -->
-																</div><!-- .box-field end -->
-															</div><!-- .fields-row end -->
-														</div><!-- .form-group end -->
-														<div class="form-group">
-															<button type="submit" class="form-control icon"><i class="fas fa-search"></i></button>
-														</div><!-- .form-group end -->
-													</form><!-- .form-banner-reservation end -->
-													<a class="btn-multiple-destinations btn x-small colorful hover-dark" href="javascript:;">
-														<i class="fas fa-plus"></i>
-														Add Another Flight
-													</a>
+													
+													
 												</div><!-- .multiple-destinations end -->
 											</li>
 										</ul><!-- .br-tabs-content end -->
@@ -2077,16 +1880,18 @@
     <script>
         var airports = '';
         var direction = '';
+		var departure,returning;
+
         $.post("airports.json",{op:""},function(res){
             airports = res;
     //        console.log(airports);
         },'json')
         var day = new Date();
-        console.log(day); 
+        // console.log(day); 
 
         var nextDay = new Date(day);
         nextDay.setDate(day.getDate() + 3);
-        console.log(nextDay); 
+        // console.log(nextDay); 
         
         var dd = $('#departure').datepicker({
             language: 'en',
@@ -2096,17 +1901,22 @@
             range:true,
             onSelect:function(formattedDate, date, inst)
             {
-//                alert(date);
+				departure = new Date(date[0]).toISOString();
+				
+				returning = (date.length == 2)?new Date(date[1]).toISOString():"";
+				// console.log(new Date(date[0]).toISOString())
+				console.log(departure,returning);
             },
             multipleDates: true,
             multipleDatesSeparator:" - ",
             minDate: new Date() // Now can select only dates, which goes after today
         }).data('datepicker');
         dd.selectDate([day,nextDay]);
+
+
         
+
        $(document).ready(function(){
-           
-       
         $('#to').autoComplete({
             minChars: 2,
             source: function(term, suggest){
@@ -2238,7 +2048,7 @@
 //                            {
 //                                pass.push('INF')
 //                            }
-                        $.post("utilities.php",{op:"Flight.packageData",direction:direction,departure:$("#departure").val(),origin:a_origin,destination:a_destination,return:$("#return").val(),passengers:pass,cabin:$("#cabin").val()},function(res){
+                        $.post("utilities.php",{op:"Flight.packageData",direction:direction,departure:departure,return:returning,origin:a_origin,destination:a_destination,passengers:pass,cabin:$("#cabin").val()},function(res){
 //                            $.unblockUI();
                             if(res.response_code == 0)
                             {
@@ -2252,7 +2062,7 @@
                     }
 
             })
-        function direction(dd)
+        function directions(dd)
         {
             direction = dd;
         }
@@ -2268,7 +2078,7 @@
         {
             var classa = $('input[name="radio"]');
 //            console.log(classa);
-            classa.each(function(){
+            classa.each(function(ee,yy){
                 if($(this).is(":checked"))
                     {
                         console.log($(this).val());
