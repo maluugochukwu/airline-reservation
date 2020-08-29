@@ -755,9 +755,20 @@ function bannerTabs() {
 				// Add class active to corresponding tab
 				$(".br-tabs-content > li").eq(clickedTabIndex).addClass("active");
 
+				if(clickedTabIndex != 1)
+				{
+					// update new active tab
+					activeTab = $(".br-tabs-content > .active");
+					$("#twoway_div").show();
+					$("#oneway_div").hide();
+				}
+				else
+				{
+					$("#twoway_div").hide();
+					$("#oneway_div").show();
+					// alert("setting datepicker to one way");
+				}
 				
-				// update new active tab
-				activeTab = $(".br-tabs-content > .active");
 				
 				// Update variable
 				activeTabHeight = activeTab.outerHeight();

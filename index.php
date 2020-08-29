@@ -61,7 +61,43 @@
       color:#fff;
       padding: 0 5px;
       border-radius: 50%;
-  }    
+  }  
+  .one_way{
+	position: relative;
+    padding: 12px 25px;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "GothamRounded", "Almarai", sans-serif;
+    font-weight: 400;
+    background-color: #f3f3f3;
+    color: #212a42;
+	display:block;
+	cursor:pointer;
+  }  
+  li.active .one_way{
+	background-color: #212a42;
+    color: #fff;
+  }
+  li.active .one_way::after{
+	bottom: -10px;
+    border-top-color: #212a42;
+    opacity: 1;
+    visibility: visible;
+  }
+  .one_way::after{
+	content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #f3f3f3;
+    transition: all 0.2s;
+  }
 </style>
 </head>
 
@@ -153,24 +189,6 @@
 										<li><a href="javascript:;" class="current">Home</a></li>
 										<li><a href="javascript:;">Flights</a></li>
 										<li><a href="javascript:;">Hotels</a></li>
-<!--										<li><a href="javascript:;">Car Rental</a></li>-->
-<!--										<li><a href="javascript:;">Guides</a></li>-->
-<!--
-										<li>
-											<a href="javascript:;">Pages</a>
-											<ul class="sub-menu">
-												<li><a href="search.html">Search</a></li>
-												<li><a href="login.html">Login</a></li>
-												<li><a href="register.html">Register</a></li>
-												<li><a href="blog-single.html">Blog Single</a></li>
-												<li><a href="destination-single.html">Destination Single</a></li>
-												<li><a href="booking-hotel-single.html">Booking Hotel Reservation</a></li>
-												<li><a href="booking-hotel-payment.html">Booking Hotel Payment</a></li>
-												<li><a href="booking-hotel-confirmation.html">Booking Hotel Confirmation</a></li>
-												<li><a href="profile-hotel-availability.html">Profile Hotel Availability</a></li>
-											</ul> .sub-menu end 
-										</li>
--->
 									</ul><!-- #menu-main end -->
 									<div class="menu-mobile-btn">
 										<div class="hamburger hamburger--slider">
@@ -213,36 +231,29 @@
 <!--									<h4>Visit Europe, America, Asia, Africa or beyond!</h4>-->
 									<div class="banner-reservation-tabs">
 										<ul class="br-tabs">
-											<li class="active"><a href="javascript:directions(1)" onclick="">Round Trip</a></li>
-											<li><a href="javascript:directions(0)" onclick="">One Way</a></li>
+											<li class="active"><a href="javascript:directions('1')" >Round Trip</a></li>
+											<li><span class="one_way" onclick="directions('0')" >One Way</span></li>
 											<li><a href="javascript:void(0)">Multiple Destinations</a></li>
 										</ul><!-- .br-tabs end -->
 										<ul class="br-tabs-content" style="background-color: rgba(57,154,244,.8); height:95px !important">
 											<li class="active">
 												<form onsubmit="return false" class="form-banner-reservation form-inline style-2 form-h-50">
-												      
 <!--												    <i class="from"></i>-->
 													<div class="form-group" style="width:60%; ">
 														<input type="text" id="from"  name="from" class="departure_arrival form-control" placeholder="From where?" data-selectedorigin="">
-<!--														<i class="fas fa-plane"></i>-->
 														<i id="former" style=" z-index:9999999999999999999999999"></i>
 													</div><!-- .form-group end -->
 													<div class="form-group"  style="width:60%; z-index:1">
 														<input type="text"  id="to" name="to" class="departure_arrival form-control" placeholder="To where?" data-selecteddestination="">
-<!--														<i class="fas fa-plane"></i>-->
 													</div><!-- .form-group end -->
-													<div class="form-group" >
-														<input type="text" name="brTimeStart" class="form-control" id="departure"
-															placeholder="2019/09/30 - 2019/10/30">
+													<div class="form-group" id="twoway_div" >
+														<input type="text" name="brTimeStart" class="form-control" id="departure" placeholder="">
 														<i class="far fa-calendar"></i>
 													</div><!-- .form-group end -->
-<!--
-													<div class="form-group">
-														<input type="text" name="brTimeEnd" class="form-control" id=""
-															placeholder="2019/09/30">
+													<div class="form-group" id="oneway_div" style="display:none"  >
+														<input type="text" name="brTimeStart" class="one_way_departure form-control"  placeholder="">
 														<i class="far fa-calendar"></i>
-													</div> .form-group end 
--->
+													</div><!-- .form-group end -->
 													<div class="form-group" style="width:50%">
 														<input type="text" name="brPassengerNumber" class="form-control show-dropdown-passengers"
 															placeholder="Passengers">
@@ -294,28 +305,6 @@
 																</ul><!-- .list-select-grade end -->
 															</li>
 															<li>
-<!--
-																<ul class="list-reservation-options">
-																	<li>
-																		<label class="label-container checkbox-default">
-																			<span>
-																				Nonstop
-																			</span>
-																			<input type="checkbox">
-																			<span class="checkmark"></span>
-																		</label>
-																	</li>
-																	<li>
-																		<label class="label-container checkbox-default">
-																			<span>
-																				Refundable
-																			</span>
-																			<input type="checkbox">
-																			<span class="checkmark"></span>
-																		</label>
-																	</li>
-																</ul> .list-reservation-options end 
--->
 															</li>
 															<li>
 																<a class="btn-reservation-passengers btn x-small colorful hover-dark"
@@ -329,10 +318,10 @@
 													 
 												</form><!-- .form-banner-reservation end -->
 												<input type="hidden" value="0" id="direction">
-                                                       <input type="hidden" value="1" id="form_adult">
-                                                       <input type="hidden" value="0" id="form_children" />
-                                                       <input type="hidden" value="0" id="form_infant" />
-                                                       <input type="hidden" value="0" id="form_cabin" />
+												<input type="hidden" value="1" id="form_adult">
+												<input type="hidden" value="0" id="form_children" />
+												<input type="hidden" value="0" id="form_infant" />
+												<input type="hidden" value="0" id="form_cabin" />
 											</li>
 											<li>
 												
@@ -1879,8 +1868,9 @@
 </style>
     <script>
         var airports = '';
-        var legs = '1';
-		var departure,returning,cabin_selected;
+		var legs = "1";
+		var cabin_selected = "economy";
+		var departure,returning;
 
         $.post("airports.json",{op:""},function(res){
             airports = res;
@@ -1901,17 +1891,38 @@
             range:true,
             onSelect:function(formattedDate, date, inst)
             {
-				departure = new Date(date[0]).toISOString();
-				
-				returning = (date.length == 2)?new Date(date[1]).toISOString():"";
+				departure = new Date(date[0]).toLocaleString('en-US',{timeZone:'Europe/Paris'});
+				departure = new Date(departure).toISOString();
+				returning = (date.length == 2)?new Date(date[1]).toLocaleString('en-US',{timeZone:'Europe/Paris'}):"";
+				returning = (date.length == 2)?new Date(returning).toISOString():"";
 				// console.log(new Date(date[0]).toISOString())
+
+				console.log("departure is",departure);
 				console.log(departure,returning);
             },
             multipleDates: true,
             multipleDatesSeparator:" - ",
             minDate: new Date() // Now can select only dates, which goes after today
         }).data('datepicker');
-        dd.selectDate([day,nextDay]);
+		dd.selectDate([day,nextDay]);
+		
+
+		var dd2 = $('.one_way_departure').datepicker({
+            language: 'en',
+            dateFormat:"M d, yyyy",
+            position: "top left",
+            toggleSelected: false,
+            onSelect:function(formattedDate, date, inst)
+            {
+				departure = new Date(date).toLocaleString('en-US',{timeZone:'Europe/Paris'});
+				departure = new Date(departure).toISOString();
+				// returning = (date.length == 2)?new Date(date[1]).toISOString():"";
+				// console.log(new Date(date[0]).toISOString())
+				console.log(departure,returning);
+            },
+            minDate: new Date() // Now can select only dates, which goes after today
+        }).data('datepicker');
+        dd2.selectDate([day]);
 
 
         
