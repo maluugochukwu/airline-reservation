@@ -2061,9 +2061,10 @@
 //                            }
                         $.post("utilities.php",{op:"Flight.packageData",direction:legs,departure:departure,return:returning,origin:a_origin,destination:a_destination,passengers:pass,cabin:cabin_selected},function(res){
 //                            $.unblockUI();
+								console.log(res);
                             if(res.response_code == 0)
                             {
-                                // window.location = "new-post.php?ga="+res.response_message;
+                                window.location = "search.php?ga="+res.response_message;
                             }
                             else
                             {
