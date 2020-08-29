@@ -604,11 +604,11 @@ function stopJunctions($arr,$stops)
 															</ul><!-- .list-stip-sorter end -->
 														</div><!-- .trip-sorter end -->
 													</div><!-- .block-content-2 end -->
-													<div id="flight_segment">
-                                                        
-                                                    </div>
+													
 												</div><!-- .content-main end -->
-										
+                                                <div class="content-main" id="flight_segment">
+
+                                                </div>
 											</div><!-- .col-lg-8 end -->
 											<div class="col-lg-4 col-md-12 col-lg-pull-8">
 										
@@ -1516,7 +1516,7 @@ function stopJunctions($arr,$stops)
         function details(el)
         {
 //            $(el).find(".flight-details").toggle();
-            $(el).parent().next().toggle();
+            $(el).parentsUntil('.block-content-2').next().toggle();
         }
         let airlineFilter = function(data)
         {
@@ -1572,8 +1572,8 @@ function stopJunctions($arr,$stops)
                             var price = item['price']['totalFare'];
                             pricesArr.push(price);
                             price = (parseInt(price)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-                            ui = ui+`<div >
-                                        <div class="block-content-2 unique" style="width:auto !important; margin:10px 0 0 15px" >
+                            ui = ui+`
+                                        <div class="block-content-2 unique" style="margin-top:10px">
                                             <div class="box-result">
                                                 <ul class="list-search-result" onclick="javascript:details(this)" style="cursor:pointer;">
                                                     ${outbound_ui(item['route']['outBound'],0,outbound_id)}
@@ -1582,7 +1582,10 @@ function stopJunctions($arr,$stops)
 
 
                                                 <div class="result-price" style="border-left:1px dashed #ccc">
-                                                    <div class="price">NGN ${price}</div>
+                                                    <div class="price">NGN 
+                                                        <span class="value">${price}</span>
+                                                        <span class="description">Price for 2 persons</span>
+                                                    </div>
                                                     <button class="btn small colorful-transparent hover-colorful" onclick="senddata(${item['recommendationID']},${item['combinationID']})" >Continue</button>
                                                 </div>
                                             </div>
@@ -1592,7 +1595,7 @@ function stopJunctions($arr,$stops)
                                             ${flightDetailsUi(item['route']['outBound'],0,outbound_id)}
                                             ${(item['route']['inBound'].length > 0)?flightDetailsUi(item['route']['inBound'],1,inbound_id):''}
                                         </div>
-                                    </div>`;
+                                    `;
                             trackCount++
                             outbound_id = "k"+trackCount;
                             inbound_id  = "d"+trackCount;
@@ -1706,7 +1709,7 @@ function stopJunctions($arr,$stops)
                                                 <ul class="result-single">
                                                     <li>
                                                         <img src="https://wakanow-images.azureedge.net/Images/flight-logos/${outbound[x]['operatingAirline']}.gif" width="52" height="52" alt="">
-                                                        <h6  id="${id}">${getAirline(outbound[x]['operatingAirline'],id)}</h6>
+                                                        <span  id="${id}">${getAirline(outbound[x]['operatingAirline'],id)}</span>
                                                     </li>
                                                     <li>
                                                         ${outbound[x]["departureAirport"]}

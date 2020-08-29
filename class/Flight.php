@@ -431,9 +431,9 @@ class Flight extends dbobject
         $new_data = array();
         $new_data['direction']   = $data['direction'];
         $new_data['departure']   = explode("T",$data['departure'])[0];
-        $new_data['origin']      = explode("T",$data['origin'])[0];
+        $new_data['origin']      = $data['origin'];
         $new_data['destination'] = $data['destination'];
-        $new_data['return']      = $data['return'];
+        $new_data['return']      = explode("T",$data['return'])[0];
         $new_data['passengers']  = $data['passengers'];
         $new_data['cabin']       = $data['cabin'];
         $new_data['op']          = "Flight.searchFlight";
