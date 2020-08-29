@@ -437,7 +437,7 @@ class Flight extends dbobject
         $new_data['passengers']  = $data['passengers'];
         $new_data['cabin']       = $data['cabin'];
         $new_data['op']          = "Flight.searchFlight";
-        return json_encode($new_data);
+        // return json_encode($new_data);
         $json_encoded_data = json_encode($new_data);
         // If there is a child passenger, check if the count of child is > adult count
         file_put_contents("pass_cnt.txt",json_encode($data['passengers']));

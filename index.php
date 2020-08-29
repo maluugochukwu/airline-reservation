@@ -283,21 +283,21 @@
 																<ul class="list-select-grade">
 																	<li>
 																		<label class="radio-container radio-default">
-																			<input type="radio" value="economy" checked="checked"  name="radio">
+																			<input type="radio" value="Economy" checked="checked"  name="radio">
 																			<span class="checkmark"></span>
 																			Economy Class
 																		</label>
 																	</li>
 																	<li>
 																		<label class="radio-container radio-default">
-																			<input type="radio" value="business"  name="radio">
+																			<input type="radio" value="Business"  name="radio">
 																			<span class="checkmark"></span>
 																			Business Class
 																		</label>
 																	</li>
 																	<li>
 																		<label class="radio-container radio-default">
-																			<input type="radio" value="first"  name="radio">
+																			<input type="radio" value="First"  name="radio">
 																			<span class="checkmark"></span>
 																			First Class
 																		</label>
@@ -1848,6 +1848,7 @@
 
     <!-- Include English language -->
     <script src="js/i18n/datepicker.en.js"></script>
+    <script src="js/jquery.blockUI.js"></script>
     
     <link rel="stylesheet" href="css/jquery.auto-complete.css">
     <link rel="stylesheet" href="css/daterangepicker.css">
@@ -1869,7 +1870,7 @@
     <script>
         var airports = '';
 		var legs = "1";
-		var cabin_selected = "economy";
+		var cabin_selected = "Economy";
 		var departure,returning;
 
         $.post("airports.json",{op:""},function(res){
@@ -2041,7 +2042,7 @@
                     var resp = true;//$(el).parsley().isValid();
                     if(resp)
                     {
-//                        $.blockUI({message:"<h5>Checking for flight availability</h5>"})
+                       $.blockUI({message:"<h5>Checking for flight availability</h5>"})
                         
                         var a_origin      = $("#from").attr("data-selectedorigin")
                         var a_destination = $("#to").attr("data-selecteddestination")
@@ -2060,7 +2061,7 @@
 //                                pass.push('INF')
 //                            }
                         $.post("utilities.php",{op:"Flight.packageData",direction:legs,departure:departure,return:returning,origin:a_origin,destination:a_destination,passengers:pass,cabin:cabin_selected},function(res){
-//                            $.unblockUI();
+                           $.unblockUI();
 								console.log(res);
                             if(res.response_code == 0)
                             {
