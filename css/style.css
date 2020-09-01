@@ -6180,7 +6180,8 @@ a.btn-social {
       padding-left: 40px; }
   .result-single img {
     margin-bottom: 10px;
-    width: 25px; }
+    /* width: 25px;  */
+  }
   .result-single .date {
     margin-top: 3px;
     font-weight: 600;
