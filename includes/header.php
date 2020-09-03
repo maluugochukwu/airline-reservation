@@ -20,6 +20,7 @@
 	============================================= -->
 	<link href="css/css-assets.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<link href="css/parsley.css" rel="stylesheet">
     <link href="css/datepicker.min.css" rel="stylesheet" type="text/css">
     <link href="fonts/fontawesome/css/all.css" rel="stylesheet" type="text/css">
         
